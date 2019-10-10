@@ -14829,14 +14829,20 @@ body {
     width: 100% !important;
   }
 }
-.cid-rEsVGWGY19 {
-  padding-top: 60px;
-  padding-bottom: 60px;
+.cid-rEwRSxdBqt {
+  padding-top: 0px;
+  padding-bottom: 0px;
   background-color: #ffffff;
 }
-.cid-rEsVGWGY19 .mbr-section {
+.cid-rEwRSxdBqt .mbr-text,
+.cid-rEwRSxdBqt blockquote {
+  color: #767676;
+}
+.cid-rEwRSxdBqt .mbr-text {
+  color: #000000;
+}
+.cid-rEwRSxdBqt .mbr-text P {
   text-align: center;
-  color: #fff;
 }
 .cid-rEvqnfshir {
   padding-top: 0px;
