@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Sitio Original 2.0",
-    "currentPage": "index.html",
+    "currentPage": "page19.html",
     "theme": {
       "name": "mobirise4",
       "title": "Mobirise 4",
@@ -41,7 +41,7 @@
     "siteFonts": [],
     "favicon": "",
     "noImageResize": "",
-    "uniqCompNum": 228,
+    "uniqCompNum": 229,
     "versionPublish": "4.10.7",
     "screenshot": "screenshot.png"
   },
@@ -16321,9 +16321,9 @@
             }
           },
           "_name": "custom-html",
-          "_customHTML": "<section mbr-id=\"_anchor\" class=\"mbr-section article content1\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#ffffff\">\n    <!-- End block parameters -->\n    </mbr-parameters> \n\n    <div class=\"container\">\n        <div class=\"media-container-row\">\n            <div class=\"mbr-text col-12 col-md-12\">\n                <h2 class=\"mbr-fonts-style block-title align-center\" data-app-selector=\".block-title\" mbr-theme-style=\"display-2\">custom-html</h2>\n            </div>\n        </div>\n    </div>\n</section>",
-          "_cid": "rEqyhWjbLC",
-          "_anchor": "custom-html-6b",
+          "_customHTML": "<section mbr-id=\"_anchor\" class=\"mbr-section article content1\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#ffffff\">\n    <!-- End block parameters -->\n    </mbr-parameters> \n\n    <div class=\"container\">\n        <div class=\"media-container-row\">\n            <div class=\"mbr-text col-12 col-md-12\">\n           <div class=\"sketchfab-embed-wrapper\">\n    <iframe title=\"A 3D model\" width=\"1060\" height=\"670\" src=\"https://sketchfab.com/models/7b279aa1c47546bc8f846b66ee508476/embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; vr\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n\n<p style=\"font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;\">\n    <a href=\"https://sketchfab.com/3d-models/um2-ensamblaje2-7b279aa1c47546bc8f846b66ee508476?utm_medium=embed&utm_source=website&utm_campaign=share-popup\" target=\"_blank\" style=\"font-weight: bold; color: #1CAAD9;\">UM2 Ensamblaje2</a>\n    by <a href=\"https://sketchfab.com/joaco1605?utm_medium=embed&utm_source=website&utm_campaign=share-popup\" target=\"_blank\" style=\"font-weight: bold; color: #1CAAD9;\">joaco1605</a>\n    on <a href=\"https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campaign=share-popup\" target=\"_blank\" style=\"font-weight: bold; color: #1CAAD9;\">Sketchfab</a>\n</p>\n</div>\n\t\t   </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "rEsKKU0Stf",
+          "_anchor": "custom-html-6c",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
