@@ -42,7 +42,7 @@
     "siteFonts": [],
     "favicon": "",
     "noImageResize": "",
-    "uniqCompNum": 278,
+    "uniqCompNum": 281,
     "versionPublish": "4.10.7",
     "screenshot": "screenshot.png"
   },
@@ -19210,6 +19210,62 @@
           "_once": false,
           "_params": {},
           "_anchor": "image2-7m"
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "background-color": "@bgColor",
+            ".line": {
+              "background-color": "@lineColor",
+              "color": "@lineColor",
+              "align": "center",
+              "height": "2px",
+              "margin": "0 auto"
+            },
+            ".section-text": {
+              "padding": "2rem 0"
+            },
+            ".inner-container": {
+              "margin": "0 auto"
+            },
+            "@media (max-width: 768px)": {
+              ".inner-container": {
+                "width": "100% !important"
+              }
+            }
+          },
+          "_name": "content9",
+          "_customHTML": "<section class=\"mbr-section article content9\" group=\"Article\">\n    \n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" step=\"1\" value=\"2\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" step=\"1\" value=\"2\">\n        <input type=\"range\" inline title=\"Text Width\" name=\"innerWidth\" min=\"50\" max=\"100\" step=\"1\" value=\"100\">\n        <input type=\"range\" inline title=\"Line Width\" name=\"lineLength\" min=\"10\" max=\"100\" step=\"1\" value=\"25\">\n        <input type=\"color\" title=\"Line Color\" name=\"lineColor\" value=\"#c138c2\">\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#ffffff\">\n    <!-- End block parameters -->\n    </mbr-parameters> \n\n    <div class=\"container\">\n        <div class=\"inner-container\" mbr-style=\"{'width': innerWidth + '%'}\">\n            <hr class=\"line\" mbr-style=\"{'width': lineLength + '%'}\">\n            <div class=\"section-text align-center mbr-fonts-style\" mbr-theme-style=\"display-5\" data-app-selector=\".section-text\" mbr-text>\n                    CÓDIGO DEL PROYECTO</div>\n            <hr class=\"line\" mbr-style=\"{'width': lineLength + '%'}\">\n        </div>\n        </div>\n</section>",
+          "_cid": "rGGSWl4z5W",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {},
+          "_anchor": "content9-7q"
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "background-color": "@bgColor",
+            ".mbr-text, blockquote": {
+              "color": "#767676"
+            },
+            ".mbr-text": {
+              "color": "#000000"
+            }
+          },
+          "_name": "content1",
+          "_customHTML": "<section class=\"mbr-section article content1\">\n    \n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline title=\"Width Content\" name=\"widthContent\" min=\"1\" max=\"4\" step=\"1\" value=\"3\">\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#ffffff\">\n    <!-- End block parameters -->\n    </mbr-parameters> \n\n    <div class=\"container\">\n        <div class=\"media-container-row\">\n            <div class=\"mbr-text col-12 mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\" data-multiline mbr-article mbr-class=\"{'col-md-6': widthContent == 1, 'col-md-8': widthContent == 2, 'col-md-10': widthContent == 3, 'col-md-12': widthContent == 4}\">//El sensor detecta cierta temperatura dentro del sistema [dependiendo de los parámetros que se establezcan en los testeos] se activa\n<div>//o desactiva el foco para que luego ventilar esta temperatura en todo el contenedor.\n</div><div>// En caso el medico tenga que digitar el angulo de giro, girará los grados que se le indiquen\n</div><div>// La programacion del motor Paso a Paso ajustado a grado fue realizado por : www.elprofegarcia.com\n</div><div>\n</div><div>//Definir las variables\n</div><div>const int pwm = 3; // Pin del Ventilador (modulación por ancho de pulsos)\n</div><div>int Pin = 12; //Pin de la bombilla\n</div><div>const int LM35 = 0; // Sensor de temperatura\n</div><div>float temperatura = 20; \n</div><div>int ADClido = 0;\n</div><div>int retardo=5;          // Tiempo de retardo en milisegundos (Velocidad del Motor)\n</div><div>int dato_rx;            // valor recibido en grados\n</div><div>int numero_pasos = 0;   // Valor en grados donde se encuentra el motor\n</div><div>String leeCadena;       // Almacena la cadena de datos recibida\n</div><div>int a = 0; // Inicializa la otra parte del sistema\n</div><div>\n</div><div>void setup(){\n</div><div>Serial.begin(9600);\n</div><div>pinMode(pwm, OUTPUT);\n</div><div>pinMode(Pin, OUTPUT);\n</div><div>analogReference(INTERNAL);\n</div><div>// Los in1 al in4 pertenecen al driver ULN200\n</div><div>pinMode(11, OUTPUT);    // Pin 11 conectar a IN4\n</div><div>pinMode(10, OUTPUT);    // Pin 10 conectar a IN3\n</div><div>pinMode(9, OUTPUT);     // Pin 9 conectar a IN2\n</div><div>pinMode(8, OUTPUT);     // Pin 8 conectar a IN1\n</div><div>}\n</div><div>\n</div><div>void loop(){  \n</div><div>//Programacion del sensor de temperatura, bombilla y ventilador\n</div><div>ADClido = analogRead(LM35);\n</div><div>temperatura = ADClido * 0.1075268817204301;\n</div><div>delay(1000);\n</div><div>\n</div><div>//Los números dentro de la condicion serán modificados después del testeo\n</div><div>\n</div><div>&nbsp; Serial.print(\"La temperatura es: \\n\" + String(temperatura));\n</div><div>\n</div><div>&nbsp; if(temperatura &gt; 30){\n</div><div>&nbsp; Serial.print(\"\\n La temperatura es muy alta por lo tanto apagar la bombilla \\n\");\n</div><div>&nbsp; digitalWrite(Pin, LOW); //Relay encendido\n</div><div>&nbsp; Serial.println(\"Homogenizando la temperatura ventilador gira a 250 pwm \\n\");\n</div><div>&nbsp; analogWrite(pwm, 250);\n</div><div>&nbsp; delay(1000);\n</div><div>}\n</div><div>\n</div><div>if(temperatura &gt; 25  &amp;&amp; temperatura &lt;= 30){\n</div><div>&nbsp; Serial.print(\"\\n La temperatura esta cerca del rango adecuado por lo tanto apagar la bombilla \\n\"); \n</div><div>&nbsp; digitalWrite(Pin, LOW); //Relay encendido\n</div><div>&nbsp; Serial.println(\"Homogenizando la temperatura ventilador gira a 170 pwm \\n\");\n</div><div>&nbsp; analogWrite(pwm, 170);\n</div><div>&nbsp; delay(1000);\n</div><div>&nbsp; a = 1;\n</div><div>} \n</div><div>\n</div><div>if(temperatura &lt; 20){\n</div><div>&nbsp; Serial.print(\"\\n La temperatura es muy BAJA por lo tanto encender la bombilla \\n\");\n</div><div>&nbsp; digitalWrite(Pin, HIGH); //Relay encendido\n</div><div>&nbsp; Serial.println(\"Homogenizando la temperatura ventilador gira a 250 pwm \\n\");\n</div><div>&nbsp; analogWrite(pwm, 250);\n</div><div>&nbsp; delay(1000);\n</div><div>}\n</div><div>\n</div><div>//Programacion del motor de paso\n</div><div>// Tengo una duda. Siempre y cuando la homogenizacion de la temperatura sea correcta se activa el codigo motor de paso (a == 1){\n</div><div>// pero al colocar este if ( a == 1) desconoce la función paso_izq Giro hacia la izquierda. ¿Por que sucede eso? {\n</div><div>while (Serial.available()) {    // Leer el valor enviado por el Puerto serial\n</div><div>&nbsp; &nbsp; delay(retardo);\n</div><div>&nbsp; &nbsp; char c  = Serial.read();     // Lee los caracteres\n</div><div>&nbsp; &nbsp; leeCadena += c;              // Convierte Caracteres a cadena de caracteres\n</div><div>&nbsp; }  \n</div><div>&nbsp; if (leeCadena.length()&gt;0){       \n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; dato_rx = leeCadena.toInt();   // Convierte Cadena de caracteres a Enteros\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Serial.print(dato_rx);         // Envia valor en Grados \n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Serial.println(\" Grados\");\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; delay(retardo);\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; dato_rx = (dato_rx * 1.4222222222); // Ajuste de 512 vueltas a los 360 grados\n</div><div>&nbsp; }  \n</div><div>\n</div><div>&nbsp; &nbsp;while (dato_rx&gt;numero_pasos){   // Girohacia la izquierda en grados\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp;paso_izq();\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp;numero_pasos = numero_pasos + 1;\n</div><div>&nbsp; &nbsp;}\n</div><div>&nbsp; &nbsp;while (dato_rx&lt;numero_pasos){   // Giro hacia la derecha en grados\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; paso_der();\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; numero_pasos = numero_pasos -1;\n</div><div>&nbsp; &nbsp;}\n</div><div>&nbsp; leeCadena = \"\";   // Inicializamos la cadena de caracteres recibidos \n</div><div>&nbsp; apagado();         // Apagado del Motor para que no se caliente\n</div><div>}  ///////////////////// Fin del Loop ///////////////////////////\n</div><div>\n</div><div>void paso_der(){         // Pasos a la derecha\n</div><div>&nbsp;digitalWrite(11, LOW); \n</div><div>&nbsp;digitalWrite(10, LOW);  \n</div><div>&nbsp;digitalWrite(9, HIGH);  \n</div><div>&nbsp;digitalWrite(8, HIGH);  \n</div><div>&nbsp; &nbsp;delay(retardo); \n</div><div>&nbsp;digitalWrite(11, LOW); \n</div><div>&nbsp;digitalWrite(10, HIGH);  \n</div><div>&nbsp;digitalWrite(9, HIGH);  \n</div><div>&nbsp;digitalWrite(8, LOW);  \n</div><div>&nbsp; &nbsp;delay(retardo); \n</div><div>&nbsp;digitalWrite(11, HIGH); \n</div><div>&nbsp;digitalWrite(10, HIGH);  \n</div><div>&nbsp;digitalWrite(9, LOW);  \n</div><div>&nbsp;digitalWrite(8, LOW);  \n</div><div>&nbsp; delay(retardo); \n</div><div>&nbsp;digitalWrite(11, HIGH); \n</div><div>&nbsp;digitalWrite(10, LOW);  \n</div><div>&nbsp;digitalWrite(9, LOW);  \n</div><div>&nbsp;digitalWrite(8, HIGH);  \n</div><div>&nbsp; delay(retardo);  \n</div><div>}\n</div><div>\n</div><div>void paso_izq() {        // Pasos a la izquierda\n</div><div>&nbsp;digitalWrite(11, HIGH); \n</div><div>&nbsp;digitalWrite(10, HIGH);  \n</div><div>&nbsp;digitalWrite(9, LOW);  \n</div><div>&nbsp;digitalWrite(8, LOW);  \n</div><div>&nbsp; delay(retardo); \n</div><div>&nbsp;digitalWrite(11, LOW); \n</div><div>&nbsp;digitalWrite(10, HIGH);  \n</div><div>&nbsp;digitalWrite(9, HIGH);  \n</div><div>&nbsp;digitalWrite(8, LOW);  \n</div><div>&nbsp; delay(retardo); \n</div><div>&nbsp;digitalWrite(11, LOW); \n</div><div>&nbsp;digitalWrite(10, LOW);  \n</div><div>&nbsp;digitalWrite(9, HIGH);  \n</div><div>&nbsp;digitalWrite(8, HIGH);  \n</div><div>&nbsp; delay(retardo); \n</div><div>&nbsp;digitalWrite(11, HIGH); \n</div><div>&nbsp;digitalWrite(10, LOW);  \n</div><div>&nbsp;digitalWrite(9, LOW);  \n</div><div>&nbsp;digitalWrite(8, HIGH);  \n</div><div>&nbsp;delay(retardo); \n</div><div>}\n</div><div>&nbsp; &nbsp; &nbsp; &nbsp; \n</div><div>void apagado() {         // Apagado del Motor\n</div><div>&nbsp;digitalWrite(11, LOW); \n</div><div>&nbsp;digitalWrite(10, LOW);  \n</div><div>&nbsp;digitalWrite(9, LOW);  \n</div><div>&nbsp;digitalWrite(8, LOW);  \n</div><div>&nbsp;}\n</div><div>//}\n</div><div>//}\n</div><div><b><br></b></div></div>\n        </div>\n    </div>\n</section>",
+          "_cid": "rGGT1BdhNI",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {},
+          "_anchor": "content1-7r"
         },
         {
           "alias": false,

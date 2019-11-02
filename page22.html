@@ -62,7 +62,7 @@
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/b">how to create your own site for free</a></section><section class="mbr-section content4 cid-rGG3w6TFqg" id="content4-7g">
+<section class="engine"><a href="https://mobirise.info/d">free web maker</a></section><section class="mbr-section content4 cid-rGG3w6TFqg" id="content4-7g">
 
     
 
@@ -288,6 +288,177 @@
             
         </div>
     </figure>
+</section>
+
+<section class="mbr-section article content9 cid-rGGSWl4z5W" id="content9-7q">
+    
+     
+
+    <div class="container">
+        <div class="inner-container" style="width: 100%;">
+            <hr class="line" style="width: 25%;">
+            <div class="section-text align-center mbr-fonts-style display-5">
+                    CÓDIGO DEL PROYECTO</div>
+            <hr class="line" style="width: 25%;">
+        </div>
+        </div>
+</section>
+
+<section class="mbr-section article content1 cid-rGGT1BdhNI" id="content1-7r">
+    
+     
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-text col-12 mbr-fonts-style display-7 col-md-10">//El sensor detecta cierta temperatura dentro del sistema [dependiendo de los parámetros que se establezcan en los testeos] se activa
+<div>//o desactiva el foco para que luego ventilar esta temperatura en todo el contenedor.
+</div><div>// En caso el medico tenga que digitar el angulo de giro, girará los grados que se le indiquen
+</div><div>// La programacion del motor Paso a Paso ajustado a grado fue realizado por : www.elprofegarcia.com
+</div><div>
+</div><div>//Definir las variables
+</div><div>const int pwm = 3; // Pin del Ventilador (modulación por ancho de pulsos)
+</div><div>int Pin = 12; //Pin de la bombilla
+</div><div>const int LM35 = 0; // Sensor de temperatura
+</div><div>float temperatura = 20; 
+</div><div>int ADClido = 0;
+</div><div>int retardo=5;          // Tiempo de retardo en milisegundos (Velocidad del Motor)
+</div><div>int dato_rx;            // valor recibido en grados
+</div><div>int numero_pasos = 0;   // Valor en grados donde se encuentra el motor
+</div><div>String leeCadena;       // Almacena la cadena de datos recibida
+</div><div>int a = 0; // Inicializa la otra parte del sistema
+</div><div>
+</div><div>void setup(){
+</div><div>Serial.begin(9600);
+</div><div>pinMode(pwm, OUTPUT);
+</div><div>pinMode(Pin, OUTPUT);
+</div><div>analogReference(INTERNAL);
+</div><div>// Los in1 al in4 pertenecen al driver ULN200
+</div><div>pinMode(11, OUTPUT);    // Pin 11 conectar a IN4
+</div><div>pinMode(10, OUTPUT);    // Pin 10 conectar a IN3
+</div><div>pinMode(9, OUTPUT);     // Pin 9 conectar a IN2
+</div><div>pinMode(8, OUTPUT);     // Pin 8 conectar a IN1
+</div><div>}
+</div><div>
+</div><div>void loop(){  
+</div><div>//Programacion del sensor de temperatura, bombilla y ventilador
+</div><div>ADClido = analogRead(LM35);
+</div><div>temperatura = ADClido * 0.1075268817204301;
+</div><div>delay(1000);
+</div><div>
+</div><div>//Los números dentro de la condicion serán modificados después del testeo
+</div><div>
+</div><div>&nbsp; Serial.print("La temperatura es: \n" + String(temperatura));
+</div><div>
+</div><div>&nbsp; if(temperatura &gt; 30){
+</div><div>&nbsp; Serial.print("\n La temperatura es muy alta por lo tanto apagar la bombilla \n");
+</div><div>&nbsp; digitalWrite(Pin, LOW); //Relay encendido
+</div><div>&nbsp; Serial.println("Homogenizando la temperatura ventilador gira a 250 pwm \n");
+</div><div>&nbsp; analogWrite(pwm, 250);
+</div><div>&nbsp; delay(1000);
+</div><div>}
+</div><div>
+</div><div>if(temperatura &gt; 25  &amp;&amp; temperatura &lt;= 30){
+</div><div>&nbsp; Serial.print("\n La temperatura esta cerca del rango adecuado por lo tanto apagar la bombilla \n"); 
+</div><div>&nbsp; digitalWrite(Pin, LOW); //Relay encendido
+</div><div>&nbsp; Serial.println("Homogenizando la temperatura ventilador gira a 170 pwm \n");
+</div><div>&nbsp; analogWrite(pwm, 170);
+</div><div>&nbsp; delay(1000);
+</div><div>&nbsp; a = 1;
+</div><div>} 
+</div><div>
+</div><div>if(temperatura &lt; 20){
+</div><div>&nbsp; Serial.print("\n La temperatura es muy BAJA por lo tanto encender la bombilla \n");
+</div><div>&nbsp; digitalWrite(Pin, HIGH); //Relay encendido
+</div><div>&nbsp; Serial.println("Homogenizando la temperatura ventilador gira a 250 pwm \n");
+</div><div>&nbsp; analogWrite(pwm, 250);
+</div><div>&nbsp; delay(1000);
+</div><div>}
+</div><div>
+</div><div>//Programacion del motor de paso
+</div><div>// Tengo una duda. Siempre y cuando la homogenizacion de la temperatura sea correcta se activa el codigo motor de paso (a == 1){
+</div><div>// pero al colocar este if ( a == 1) desconoce la función paso_izq Giro hacia la izquierda. ¿Por que sucede eso? {
+</div><div>while (Serial.available()) {    // Leer el valor enviado por el Puerto serial
+</div><div>&nbsp; &nbsp; delay(retardo);
+</div><div>&nbsp; &nbsp; char c  = Serial.read();     // Lee los caracteres
+</div><div>&nbsp; &nbsp; leeCadena += c;              // Convierte Caracteres a cadena de caracteres
+</div><div>&nbsp; }  
+</div><div>&nbsp; if (leeCadena.length()&gt;0){       
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; dato_rx = leeCadena.toInt();   // Convierte Cadena de caracteres a Enteros
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Serial.print(dato_rx);         // Envia valor en Grados 
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Serial.println(" Grados");
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; delay(retardo);
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; dato_rx = (dato_rx * 1.4222222222); // Ajuste de 512 vueltas a los 360 grados
+</div><div>&nbsp; }  
+</div><div>
+</div><div>&nbsp; &nbsp;while (dato_rx&gt;numero_pasos){   // Girohacia la izquierda en grados
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp;paso_izq();
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp;numero_pasos = numero_pasos + 1;
+</div><div>&nbsp; &nbsp;}
+</div><div>&nbsp; &nbsp;while (dato_rx&lt;numero_pasos){   // Giro hacia la derecha en grados
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; paso_der();
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; numero_pasos = numero_pasos -1;
+</div><div>&nbsp; &nbsp;}
+</div><div>&nbsp; leeCadena = "";   // Inicializamos la cadena de caracteres recibidos 
+</div><div>&nbsp; apagado();         // Apagado del Motor para que no se caliente
+</div><div>}  ///////////////////// Fin del Loop ///////////////////////////
+</div><div>
+</div><div>void paso_der(){         // Pasos a la derecha
+</div><div>&nbsp;digitalWrite(11, LOW); 
+</div><div>&nbsp;digitalWrite(10, LOW);  
+</div><div>&nbsp;digitalWrite(9, HIGH);  
+</div><div>&nbsp;digitalWrite(8, HIGH);  
+</div><div>&nbsp; &nbsp;delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, LOW); 
+</div><div>&nbsp;digitalWrite(10, HIGH);  
+</div><div>&nbsp;digitalWrite(9, HIGH);  
+</div><div>&nbsp;digitalWrite(8, LOW);  
+</div><div>&nbsp; &nbsp;delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, HIGH); 
+</div><div>&nbsp;digitalWrite(10, HIGH);  
+</div><div>&nbsp;digitalWrite(9, LOW);  
+</div><div>&nbsp;digitalWrite(8, LOW);  
+</div><div>&nbsp; delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, HIGH); 
+</div><div>&nbsp;digitalWrite(10, LOW);  
+</div><div>&nbsp;digitalWrite(9, LOW);  
+</div><div>&nbsp;digitalWrite(8, HIGH);  
+</div><div>&nbsp; delay(retardo);  
+</div><div>}
+</div><div>
+</div><div>void paso_izq() {        // Pasos a la izquierda
+</div><div>&nbsp;digitalWrite(11, HIGH); 
+</div><div>&nbsp;digitalWrite(10, HIGH);  
+</div><div>&nbsp;digitalWrite(9, LOW);  
+</div><div>&nbsp;digitalWrite(8, LOW);  
+</div><div>&nbsp; delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, LOW); 
+</div><div>&nbsp;digitalWrite(10, HIGH);  
+</div><div>&nbsp;digitalWrite(9, HIGH);  
+</div><div>&nbsp;digitalWrite(8, LOW);  
+</div><div>&nbsp; delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, LOW); 
+</div><div>&nbsp;digitalWrite(10, LOW);  
+</div><div>&nbsp;digitalWrite(9, HIGH);  
+</div><div>&nbsp;digitalWrite(8, HIGH);  
+</div><div>&nbsp; delay(retardo); 
+</div><div>&nbsp;digitalWrite(11, HIGH); 
+</div><div>&nbsp;digitalWrite(10, LOW);  
+</div><div>&nbsp;digitalWrite(9, LOW);  
+</div><div>&nbsp;digitalWrite(8, HIGH);  
+</div><div>&nbsp;delay(retardo); 
+</div><div>}
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 
+</div><div>void apagado() {         // Apagado del Motor
+</div><div>&nbsp;digitalWrite(11, LOW); 
+</div><div>&nbsp;digitalWrite(10, LOW);  
+</div><div>&nbsp;digitalWrite(9, LOW);  
+</div><div>&nbsp;digitalWrite(8, LOW);  
+</div><div>&nbsp;}
+</div><div>//}
+</div><div>//}
+</div><div><strong><br></strong></div></div>
+        </div>
+    </div>
 </section>
 
 <section class="mbr-section content8 cid-rGG70gNtrg" id="content8-7i">
